@@ -3,6 +3,7 @@ import { Author, POST_DETAILS } from "../components/PostCard";
 import { IPostById } from "../schema";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import blankProfile from "../assets/blankProfile.png";
 
 const POST_DETAIL_WITH_CONTENT = gql`
   ${POST_DETAILS}
@@ -33,7 +34,7 @@ function Post() {
           <small>Likes: {data?.postById.likes}</small>
           <Author to={`/user/${data?.postById.author.id}`}>
             <img
-              src={data?.postById.author.profileImg || "blankProfile.png"}
+              src={data?.postById.author.profileImg || blankProfile}
               alt={`profile-${data?.postById.author.id}`}
             />
             <span>{data?.postById.author.username}</span>

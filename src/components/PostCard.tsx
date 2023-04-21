@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { IPost } from "../schema";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
+import blankProfile from "../assets/blankProfile.png";
 
 export const POST_DETAILS = gql`
   fragment PostDetails on Post {
@@ -28,12 +29,12 @@ function PostCard({
   },
 }: IProps) {
   return (
-    <CardContainer to={`post/${id}`}>
+    <CardContainer to={`/post/${id}`}>
       <DetailsContainer>
         <h2>{title}</h2>
         <span>Likes: {likes}</span>
         <Author to={`/user/${authorId}`}>
-          <img src={profileImg || "blankProfile.png"} alt={`profile-${id}`} />
+          <img src={profileImg || blankProfile} alt={`profile-${id}`} />
           <span>{username}</span>
         </Author>
       </DetailsContainer>

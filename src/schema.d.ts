@@ -2,11 +2,13 @@ interface IPost {
   id: string;
   title: string;
   likes: number;
-  author: {
-    id: string;
-    username: string;
-    profileImg: null | string;
-  };
+  author: IUser;
+}
+
+interface IUser {
+  id: string;
+  profileImg: null | string;
+  username: string;
 }
 
 interface IPostWithContent extends IPost {
@@ -21,4 +23,9 @@ interface IPostById {
   postById: IPostWithContent;
 }
 
-export { IPost, IPosts, IPostWithContent, IPostById };
+interface IUserWithPosts {
+  userById: IUser;
+  postsByUserId: IPost[];
+}
+
+export { IPost, IPosts, IPostWithContent, IPostById, IUserWithPosts };
